@@ -1,0 +1,6 @@
+C:\MAP\ToyInterpretor\ToyInterpretor\bin\Debug\ToyInterpretor.exe.config
+C:\MAP\ToyInterpretor\ToyInterpretor\bin\Debug\ToyInterpretor.exe
+C:\MAP\ToyInterpretor\ToyInterpretor\bin\Debug\ToyInterpretor.pdb
+C:\MAP\ToyInterpretor\ToyInterpretor\obj\Debug\ToyInterpretor.csprojResolveAssemblyReference.cache
+C:\MAP\ToyInterpretor\ToyInterpretor\obj\Debug\ToyInterpretor.exe
+C:\MAP\ToyInterpretor\ToyInterpretor\obj\Debug\ToyInterpretor.pdb
