@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>sda.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+// SDA.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Set.h"
+#include "UI.h"
+#include "DLLANode.h"
+
+int main()
+<span style = "background-color:#dfd">{</span>
+
+<span style = "background-color:#dfd">	testsNode();
+	testsArtwork();
+	testsSet();
+	testsIterator();</span>
+
+<span style = "background-color:#dfd">	Set s{};</span>
+
+<span style = "background-color:#dfd">	Artwork a0{ "Sunlight","painting",5000 };
+	Artwork a1{ "Human","sculpture",10000 };
+	Artwork a2{ "London","painting",3000 };</span>
+
+<span style = "background-color:#dfd">	s.add(a0);
+	s.add(a1);
+	s.add(a2);</span>
+
+<span style = "background-color:#dfd">	UI ui{ s };</span>
+
+<span style = "background-color:#dfd">	ui.run();</span>
+
+<span style = "background-color:#dfd">	system("pause");
+    return 0;
+}</span>
+</pre>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+understanding,vasile,4:20,50,https://www.youtube.com/watch?v=SWZfFNyUsxc&index=2&list=PLAE85DE8440AA6B83
+variables,ion,10:2,1000,https://www.youtube.com/watch?v=QwBSv4-_Lmk&list=PLAE85DE8440AA6B83&index=4
+calculator,steve,5:0,20,https://www.youtube.com/watch?v=yjucJUsHSqg&list=PLAE85DE8440AA6B83&index=5
+variables,john,8:45,40,https://www.youtube.com/watch?v=3Iq_uFbc4L4&index=6&list=PLAE85DE8440AA6B83
+classes,ion,11:35,150,https://www.youtube.com/watch?v=ABRP_5RYhqU&list=PLAE85DE8440AA6B83&index=12
+constructors,john,6:22,130,https://www.youtube.com/watch?v=_b7odUc7lg0&index=14&list=PLAE85DE8440AA6B83
+Bserghtfj,HSFDGRHT,1:0,44,www.hjhjh
+functions,john,12:32,34,www.rgth
+print,george,3:10,100,https://www.youtube.com/watch?v=sPv0HQ8xOaU&index=3&list=PLAE85DE8440AA6B83

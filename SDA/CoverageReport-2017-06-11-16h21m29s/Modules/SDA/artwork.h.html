@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>artwork.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include &lt;string&gt;
+class Artwork 
+{
+private:
+	std::string name;
+	std::string type;
+	double price;
+public:
+<span style = "background-color:#dfd">	Artwork(){}
+	Artwork(std::string n,std::string t,double p) : name{n},type{t},price{p}{}
+	~Artwork(){}</span>
+
+<span style = "background-color:#dfd">	std::string getName() {return name;}
+	std::string getType() { return type; }
+	double getPrice() { return price; }</span>
+
+	std::string toString()
+<span style = "background-color:#dfd">	{
+		return "Name:" + getName() + " " + "Type:" + getType() + " " + "Price:" + std::to_string(getPrice());
+	}</span>
+};
+
+void testsArtwork();</pre>
+	</body>
+</html>

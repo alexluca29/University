@@ -1,0 +1,44 @@
+[bits 32]
+
+section .text 
+
+extern  _printf
+extern _exit
+
+global  _main 
+
+_main:
+	mov [si],0
+	loop:
+		mov eax,a[si]
+		cmp eax,0
+		jl negativ
+		
+		negativ:
+			neg ax
+			add [s],ax
+
+push DWORD format
+	call _printf
+	add esp,8
+	
+	push    0
+    call    _exit
+    ret
+	
+section .data
+a dd 1,-10,5,2,5,0,-9,17
+s dd 0
+format db "The sum is:%d",0
+
+
+1 get current time
+extern __time32
+eax
+2Bucla
+	cititi de la tast <- eax
+	citesc '$' -> exit loop
+	and cd,000......111........b
+	shift
+	mul ax->dx:ax
+	add eax,[k]

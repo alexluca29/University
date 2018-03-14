@@ -1,0 +1,12 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="4">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="360" startPos="273" endPos="273" selMode="0" lang="Assembly" encoding="-1" filename="C:\ASC\asc32\asm_tools\example\example.asm" />
+            <File firstVisibleLine="10" xOffset="0" scrollWidth="270" startPos="468" endPos="495" selMode="0" lang="Assembly" encoding="-1" filename="C:\ASC\asc32\asm_tools\probleme\ex2.asm" />
+            <File firstVisibleLine="8" xOffset="0" scrollWidth="320" startPos="277" endPos="277" selMode="0" lang="Assembly" encoding="-1" filename="C:\ASC\asc32\asm_tools\probleme\ex3.asm" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="600" startPos="544" endPos="544" selMode="0" lang="Assembly" encoding="-1" filename="C:\ASC\asc32\asm_tools\probleme\ex4.asm" />
+            <File firstVisibleLine="91" xOffset="0" scrollWidth="990" startPos="1253" endPos="1253" selMode="0" lang="Assembly" encoding="-1" filename="C:\ASC\asc32\asm_tools\6_lowercase.asm" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

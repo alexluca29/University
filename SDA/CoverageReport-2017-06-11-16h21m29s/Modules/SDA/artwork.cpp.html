@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>artwork.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "Artwork.h"
+#include &lt;assert.h&gt;
+
+void testsArtwork()
+<span style = "background-color:#dfd">{
+	Artwork a{ "asd","dsa",123 };
+	assert("asd" == a.getName());
+	assert("dsa" == a.getType());
+	assert(123 == a.getPrice());
+	a.toString();
+}</span></pre>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>dllanode.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "stdafx.h"
+#include "DLLANode.h"
+
+void testsNode()
+<span style = "background-color:#dfd">{
+	Artwork a{ "abc","sculpture",5000 };
+	DLLANode n{ a };
+	Artwork b{ "ccc","gg",543 };
+	n.setInfo(b);
+	assert(n.getInfo().getName() == "ccc");
+	n.setNext(0);
+	assert(n.getNext() == 0);
+	n.setPrev(5);
+	assert(n.getPrev() == 5);
+}</span></pre>
+	</body>
+</html>

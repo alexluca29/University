@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>set.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include &lt;iostream&gt;
+#include "DLLANode.h"
+#define dim 50
+
+class SetIterator;
+class Set
+{
+private:
+	DLLANode nodes[dim];
+	int cap;
+	int size;
+	int head;
+	int tail;
+	int firstEmpty;
+public:
+<span style = "background-color:#dfd">	Set()
+	{
+		this-&gt;cap = dim;
+		this-&gt;size = 0;
+		this-&gt;head = 0;
+		this-&gt;tail = 0;
+		this-&gt;firstEmpty = 0;
+		for (int i = 0; i &lt; dim; i++)</span>
+		{
+<span style = "background-color:#dfd">			nodes[i] = DLLANode{ Artwork{} };
+		}
+	}</span>
+	//Set(const Set&amp; s);
+<span style = "background-color:#dfd">	~Set() {};</span>
+
+	DLLANode* getList();
+
+	void addIfEmpty(Artwork a);
+	void add(Artwork a);
+	void searchFirstEmpty();
+	void remove(Artwork a);
+	bool find(Artwork a);
+	int getSize();
+	SetIterator getIterator();
+
+<span style = "background-color:#dfd">	int getHead() { return head; }
+	int getTail() { return tail; }</span>
+	
+};
+
+
+class SetIterator
+{
+private:
+	DLLANode dlla[dim];
+	int currentN;
+
+public:
+<span style = "background-color:#dfd">	SetIterator(Set s)
+	{
+		for (int i = 0; i &lt; dim; i++)
+			dlla[i] = s.getList()[i];
+		currentN = s.getHead();
+	}</span>
+
+<span style = "background-color:#dfd">	Artwork getCurrent() { return dlla[currentN].getInfo(); }</span>
+	bool valid();
+	void next();
+
+<span style = "background-color:#dfd">	int getCurrentIndex() { return currentN; }</span>
+};
+
+
+void testAdd();
+void testRemove();
+void testFind();
+void testsSet();
+
+void testsIterator();</pre>
+	</body>
+</html>

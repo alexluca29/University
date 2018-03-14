@@ -1,0 +1,153 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>ui.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "UI.h"
+
+using namespace std;
+
+void UI::printMenu()
+<span style = "background-color:#dfd">{
+	cout &lt;&lt; endl;
+	cout &lt;&lt; "Available commands:" &lt;&lt; endl;
+	cout &lt;&lt; "1.Add an artwork" &lt;&lt; endl;
+	cout &lt;&lt; "2.Remove an artwork" &lt;&lt; endl;
+	cout &lt;&lt; "3.Get the number of artworks in the musseum" &lt;&lt; endl;
+	cout &lt;&lt; "4.Look for an artwork in the musseum" &lt;&lt; endl;
+	cout &lt;&lt; "5.List all the artworks" &lt;&lt; endl;
+}</span>
+
+void UI::addUI()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Give a name: " &lt;&lt; endl;
+	cin.ignore();
+	std::string name;
+	getline(cin,name);
+	cout &lt;&lt; "Give a type: " &lt;&lt; endl;
+	cin.ignore();
+	std::string type;
+	getline(cin, type);
+	cout &lt;&lt; "Give a price: " &lt;&lt; endl;
+	cin.ignore();
+	std::string price;
+	getline(cin, price);
+	double p=0;
+	try</span>
+	{
+<span style = "background-color:#fdd">		double p = stod(price);
+	}</span>
+	catch(exception e)
+<span style = "background-color:#fdd">	{
+		cout &lt;&lt; "Give a number for the price";
+		return;
+	}</span>
+
+<span style = "background-color:#fdd">	Artwork a{ name,type,p };
+	try</span>
+	{
+<span style = "background-color:#fdd">		if (s.getSize() == 0)
+			s.addIfEmpty(a);
+		else
+			s.add(a);
+	}</span>
+	catch (exception &amp;e)
+	{
+<span style = "background-color:#fdd">		cout &lt;&lt; e.what();
+		return;
+	}
+}</span>
+
+void UI::removeUI()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Give a name: " &lt;&lt; endl;
+	cin.ignore();
+	std::string name;
+	getline(cin, name);</span>
+
+<span style = "background-color:#fdd">	Artwork a{ name,"",0 };
+	try</span>
+	{
+<span style = "background-color:#fdd">		s.remove(a);
+	}</span>
+	catch(exception &amp;e)
+	{
+<span style = "background-color:#fdd">		cout &lt;&lt; e.what();
+		return;
+	}
+}</span>
+
+
+void UI::display()
+<span style = "background-color:#fdd">{
+	SetIterator it{ s };
+	while (it.valid())</span>
+	{
+<span style = "background-color:#fdd">		cout &lt;&lt; it.getCurrent().toString() &lt;&lt; endl;
+		it.next();
+	}
+}</span>
+
+void UI::findUI()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Give a name: " &lt;&lt; endl;
+	std::string name;
+	cin &gt;&gt; name;
+	Artwork a{ name,"",0 };</span>
+
+<span style = "background-color:#fdd">	if (s.find(a) == true)
+		cout &lt;&lt; "The artwork exits" &lt;&lt; endl;
+	else
+		cout &lt;&lt; "The artwork does not exist" &lt;&lt; endl;
+}</span>
+
+
+void UI::run()
+<span style = "background-color:#dfd">{
+	while (true)</span>
+	{
+<span style = "background-color:#dfd">		printMenu();</span>
+		int command;
+<span style = "background-color:#dfd">		cout &lt;&lt; "Your command: ";
+		cin &gt;&gt; command;
+		if (command == 0)
+			break;</span>
+<span style = "background-color:#fdd">		switch (command)</span>
+		{
+		case 1:
+		{
+<span style = "background-color:#fdd">			addUI();
+			break;</span>
+		}
+		case 2:
+		{
+<span style = "background-color:#fdd">			removeUI();
+			break;</span>
+
+		}
+		case 3:
+		{
+<span style = "background-color:#fdd">			cout &lt;&lt; s.getSize() &lt;&lt; endl;
+			break;</span>
+		}
+		case 4:
+		{
+<span style = "background-color:#fdd">			findUI();
+			break;</span>
+		}
+		case 5:
+		{
+<span style = "background-color:#fdd">			display();</span>
+			break;
+		}
+		}
+<span style = "background-color:#fdd">	}</span>
+<span style = "background-color:#dfd">}</span></pre>
+	</body>
+</html>

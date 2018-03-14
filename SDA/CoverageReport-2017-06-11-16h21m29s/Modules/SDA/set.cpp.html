@@ -1,0 +1,248 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>set.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "Set.h"
+#include &lt;assert.h&gt;
+
+using namespace std;
+
+DLLANode* Set::getList()
+<span style = "background-color:#dfd">{
+	return nodes;
+}</span>
+
+void Set::addIfEmpty(Artwork a)
+<span style = "background-color:#dfd">{
+	int newElem = firstEmpty;
+	DLLANode n{ a };
+	nodes[newElem] = n;
+	firstEmpty++;
+	this-&gt;size++;
+	this-&gt;head = newElem;
+	this-&gt;tail = newElem;
+}</span>
+
+void Set::add(Artwork a)
+<span style = "background-color:#dfd">{
+	if (find(a) == true)
+		throw exception{ "Element already in the set" };
+	DLLANode n{ a };
+	int auxTail = tail;</span>
+
+<span style = "background-color:#dfd">	nodes[tail].setNext(firstEmpty);
+	tail = firstEmpty;
+	int newElem = firstEmpty;
+	nodes[newElem] = n;
+	searchFirstEmpty();
+	nodes[newElem].setPrev(auxTail);
+	nodes[newElem].setNext(-1);
+	this-&gt;size++;
+}</span>
+
+void Set::searchFirstEmpty()
+<span style = "background-color:#dfd">{
+	for (int i = 1; i &lt; dim; i++)</span>
+	{
+<span style = "background-color:#dfd">		if(nodes[i].getInfo().getName()=="" &amp;&amp; nodes[i].getInfo().getType()=="")</span>
+		{
+<span style = "background-color:#dfd">			this-&gt;firstEmpty = i;
+			break;</span>
+		}
+<span style = "background-color:#dfd">	}
+}</span>
+
+void Set::remove(Artwork a)
+<span style = "background-color:#dfd">{
+	if (find(a) == false)
+		throw exception{ "Element not in the set" };
+	SetIterator it = getIterator();
+	while (it.getCurrent().getName() != a.getName())</span>
+	{
+<span style = "background-color:#dfd">		it.next();
+	}
+	int pos = it.getCurrentIndex();</span>
+
+<span style = "background-color:#dfd">	int previousPos = nodes[pos].getPrev();
+	int nextPos = nodes[pos].getNext();</span>
+
+<span style = "background-color:#dfd">	if (pos == head &amp;&amp; pos == tail)</span>
+	{
+<span style = "background-color:#dfd">		head = -1;
+		tail = -1;
+		size--;</span>
+	}
+<span style = "background-color:#dfd">	else if (pos == head)</span>
+	{
+<span style = "background-color:#dfd">		nodes[nextPos].setPrev(-1);
+		head = nextPos;
+		size--;</span>
+	}
+<span style = "background-color:#dfd">	else if (pos == tail)</span>
+	{
+<span style = "background-color:#dfd">		nodes[previousPos].setNext(-1);
+		tail = previousPos;
+		size--;</span>
+	}
+
+<span style = "background-color:#dfd">	else {
+		nodes[previousPos].setNext(nextPos);
+		nodes[nextPos].setPrev(previousPos);
+		this-&gt;size--;</span>
+	}
+<span style = "background-color:#dfd">	searchFirstEmpty();
+}</span>
+
+bool Set::find(Artwork a)
+<span style = "background-color:#dfd">{
+	SetIterator it = getIterator();
+	while (it.valid())</span>
+	{
+<span style = "background-color:#dfd">		if (it.getCurrent().getName() == a.getName())
+			return true;
+		it.next();
+	}
+	return false;
+}</span>
+
+int Set::getSize()
+<span style = "background-color:#dfd">{
+	return this-&gt;size;
+}</span>
+
+
+SetIterator Set::getIterator()
+<span style = "background-color:#dfd">{
+	SetIterator s{ *this };
+	return s;
+}</span>
+
+//---------------Iterator----------
+
+
+bool SetIterator::valid()
+<span style = "background-color:#dfd">{
+	if (currentN == -1)
+		return false;
+	return true;
+}</span>
+
+void SetIterator::next()
+<span style = "background-color:#dfd">{
+	int pos = currentN;
+	currentN = dlla[pos].getNext();
+}</span>
+
+
+
+//----------tests-------
+
+void testAdd()
+<span style = "background-color:#dfd">{
+	Set s{};
+	Artwork a0{ "Sunlight","painting",5000 };
+	Artwork a1{ "Human","sculpture",10000 };
+	Artwork a2{ "London","painting",3000 };</span>
+
+<span style = "background-color:#dfd">	s.addIfEmpty(a0);
+	assert(s.getSize() == 1);
+	assert(s.getHead() == 0);
+	s.add(a1);
+	s.add(a2);
+	assert(s.getList()[s.getTail()].getInfo().getName() == "London");
+	assert(s.getSize() == 3);
+	try {
+		s.add(a2);</span>
+<span style = "background-color:#fdd">	}</span>
+	catch (exception &amp;e)
+	{
+<span style = "background-color:#dfd">	}
+}</span>
+
+
+void testRemove()
+<span style = "background-color:#dfd">{
+	Set s{};
+	Artwork a0{ "Sunlight","painting",5000 };
+	Artwork a1{ "Human","sculpture",10000 };
+	Artwork a2{ "London","painting",3000 };
+	Artwork a3{ "London1","paintingr",3000 };</span>
+
+<span style = "background-color:#dfd">	s.addIfEmpty(a0);
+	s.add(a1);
+	s.add(a3);
+	s.add(a2);</span>
+
+<span style = "background-color:#dfd">	s.remove(a3);
+	assert(s.getSize() == 3);
+	assert(s.find(a3) == false);
+	s.remove(a2);
+	assert(s.getSize() == 2);
+	assert(s.getList()[s.getTail()].getInfo().getName() == a1.getName());
+	s.remove(a0);
+	assert(s.getSize() == 1);
+	assert(s.getList()[s.getHead()].getInfo().getName() == a1.getName());
+	s.remove(a1);
+	assert(s.getSize() == 0);
+	try</span>
+	{
+<span style = "background-color:#dfd">		s.remove(a1);</span>
+<span style = "background-color:#fdd">	}</span>
+	catch(exception &amp;e)
+<span style = "background-color:#dfd">	{ }
+}</span>
+
+
+void testFind()
+<span style = "background-color:#dfd">{</span>
+
+<span style = "background-color:#dfd">	Set s{};
+	Artwork a0{ "Sunlight","painting",5000 };
+	Artwork a1{ "Human","sculpture",10000 };
+	Artwork a2{ "London","painting",3000 };
+	s.add(a0);
+	s.add(a1);</span>
+	
+<span style = "background-color:#dfd">	assert(s.find(a2) == false);
+	assert(s.find(a1) == true);
+}</span>
+
+void testsSet()
+<span style = "background-color:#dfd">{
+	testAdd();
+	testRemove();
+	testFind();
+}</span>
+
+
+void testsIterator()
+<span style = "background-color:#dfd">{
+	Set s{};
+	Artwork a0{ "Sunlight","painting",5000 };
+	Artwork a1{ "Human","sculpture",10000 };
+	Artwork a2{ "London","painting",3000 };
+	s.addIfEmpty(a0);
+	s.add(a1);
+	s.add(a2);</span>
+
+<span style = "background-color:#dfd">	SetIterator it{ s };
+	assert(it.getCurrentIndex() == 0);
+	assert(it.getCurrent().getName() == a0.getName());
+	it.next();
+	assert(it.getCurrentIndex() == 1);
+	assert(it.getCurrent().getName() == a1.getName());
+	it.next();
+	assert(it.getCurrent().getName() == a2.getName());
+	assert(it.valid() == true);
+	it.next();
+	assert(it.valid() == false);
+}</span></pre>
+	</body>
+</html>

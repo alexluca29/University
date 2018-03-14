@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>dllanode.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "Artwork.h"
+#include &lt;assert.h&gt;
+
+class DLLANode
+{
+private:
+	Artwork info;
+	int next;
+	int prev;
+public:
+<span style = "background-color:#dfd">	DLLANode(){}
+	DLLANode(Artwork i) : info{i},next{-1},prev{-1}{}
+	~DLLANode(){}</span>
+
+<span style = "background-color:#dfd">	Artwork getInfo() { return info; }
+	int getNext() { return next; }
+	int getPrev() { return prev; }</span>
+
+<span style = "background-color:#dfd">	void setInfo(Artwork a) { this-&gt;info = a; }
+	void setNext(int x) { this-&gt;next = x; }
+	void setPrev(int x) { this-&gt;prev = x; }</span>
+};
+
+void testsNode();</pre>
+	</body>
+</html>
